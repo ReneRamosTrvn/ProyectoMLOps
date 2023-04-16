@@ -67,7 +67,7 @@ def get_contents(rating: str):
 
 
 @app.get('/get_recommendations_new/{title}')
-def get_recommendations_new(title: str, df=df, num_recommendations=5):
+def get_recommendations_new(title: str, num_recommendations=5):
     # Step 1: Create dummy variables for each genre
     genre_dummies = df['listed_in'].str.join('|').str.get_dummies()
 
