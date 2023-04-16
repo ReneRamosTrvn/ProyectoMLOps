@@ -16,3 +16,4 @@ typing_extensions
 tzdata
 uvicorn
 scikit-learn
+pickle
