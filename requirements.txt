@@ -5,7 +5,7 @@ fastapi
 h11
 idna
 numpy
-pandas
+pandas>=1.3.4
 pydantic
 python-dateutil
 pytz
