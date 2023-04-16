@@ -19,7 +19,7 @@ def get_max_duration(year: int, platform: str, duration_type: str):
     df_filtered = df.loc[(df['release_year'] == year) & df['show_id'].str.startswith(
         platform_letter) & (df['duration_type'] == duration_type) & (df['type'] == 'movie')]
     movie = df_filtered.loc[df_filtered['duration_int'].idxmax()]
-    return {'pelicula': movie['title'][0]}
+    return {'pelicula': movie['title']}
 
 
 @app.get('/get_score_count/{platform}/{score}/{year}')
