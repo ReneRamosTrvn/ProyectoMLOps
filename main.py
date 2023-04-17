@@ -149,8 +149,8 @@ def get_contents(rating: str):
     return {'rating': rating, 'content': count}
 
 
-@app.get('/get_recommendations_new/{title}')
-def get_recommendations_new(title: str, num_recommendations=5):
+@app.get('/get_recommendations/{title}')
+def get_recommendations(title: str):
     """
     This model will give you a recommendation based on a given movie
 
@@ -160,6 +160,7 @@ def get_recommendations_new(title: str, num_recommendations=5):
     Returns:
     A list of 5 movies this model recommends you
     """
+    num_recommendations = 5
     # Load preprocessed data and trained model from joblib files
     df_sample, features, cosine_sim = joblib.load('preprocessed_data.joblib')
     scaler = joblib.load('trained_model.joblib')
