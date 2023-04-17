@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 import pickle
-import gzip
+
 
 df = pd.read_csv('./datasets/streaming.csv')
 df_sample = df.sample(n=3000, random_state=42)
@@ -15,10 +15,11 @@ scaler = StandardScaler()
 features_scaled = scaler.fit_transform(features)
 cosine_sim = cosine_similarity(features_scaled)
 
-with open('preprocessed_data.pickle.gz', 'wb') as f:
+# Save the preprocessed data and trained model to files without compression
+with open('preprocessed_data.pickle', 'wb') as f:
     pickle.dump((df_sample, features, cosine_sim), f)
 
-with open('trained_model.pickle.gz', 'wb') as f:
+with open('trained_model.pickle', 'wb') as f:
     pickle.dump((scaler,), f)
 
 

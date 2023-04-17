@@ -156,11 +156,11 @@ def get_recommendations_new(title: str, num_recommendations=5):
     Returns:
     A list of 5 movies this model recommends you
     """
-    # Load preprocessed data and trained model from gzip files
-    with open('preprocessed_data.pickle.gz', 'rb') as f:
+    # Load preprocessed data and trained model from files without compression
+    with open('preprocessed_data.pickle', 'rb') as f:
         df_sample, features, cosine_sim = pickle.load(f)
 
-    with open('trained_model.pickle.gz', 'rb') as f:
+    with open('trained_model.pickle', 'rb') as f:
         scaler, = pickle.load(f)
 
     # Preprocess the input title
