@@ -16,9 +16,9 @@ def get_platform_letter(platform):
     return platform_map[platform]
 
 
-@app.get('/')
-def welcome():
-    print('Welcome to my project')
+@app.get("/")
+async def root():
+    return {"message": "Welcome to my project"}
 
 
 @app.get('/get_max_duration/{year}/{platform}/{duration_type}')
