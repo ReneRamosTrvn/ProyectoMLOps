@@ -79,8 +79,6 @@ Get the title of the movie which contains the longest duration in certain year a
 
     Returns:
     A list of 5 movies this model recommends you
-    
-  Try: /get_contents/joni
   
   
  Technologies Used
