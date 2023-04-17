@@ -127,7 +127,7 @@ def prod_per_country(type: str, country: str, year: int):
     """
     df_pc = df.loc[(df['type'] == type) & (
         df['release_year'] == year) & (df['country'] == country)]
-    return {'country': country, 'year': year, 'movies': df_pc.shape[0]}
+    return {'country': country, 'year': year, 'content': df_pc.shape[0]}
 
 # Get all movies of a given rating
 
