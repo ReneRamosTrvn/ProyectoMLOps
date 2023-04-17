@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 import pandas as pd
-import pickle
-import gzip
+import joblib
 
 app = FastAPI()
 
@@ -15,6 +14,11 @@ df = pd.read_csv('./datasets/streaming.csv')
 def get_platform_letter(platform):
     platform_map = {'netflix': 'n', 'disney': 'd', 'amazon': 'a', 'hulu': 'h'}
     return platform_map[platform]
+
+
+@app.get('/')
+def welcome():
+    print('Welcome to my project')
 
 
 @app.get('/get_max_duration/{year}/{platform}/{duration_type}')
@@ -156,12 +160,9 @@ def get_recommendations_new(title: str, num_recommendations=5):
     Returns:
     A list of 5 movies this model recommends you
     """
-    # Load preprocessed data and trained model from files without compression
-    with open('preprocessed_data.pickle', 'rb') as f:
-        df_sample, features, cosine_sim = pickle.load(f)
-
-    with open('trained_model.pickle', 'rb') as f:
-        scaler, = pickle.load(f)
+    # Load preprocessed data and trained model from joblib files
+    df_sample, features, cosine_sim = joblib.load('preprocessed_data.joblib')
+    scaler = joblib.load('trained_model.joblib')
 
     # Preprocess the input title
     title_features = pd.DataFrame(
