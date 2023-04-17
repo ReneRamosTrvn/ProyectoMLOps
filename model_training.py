@@ -15,10 +15,10 @@ scaler = StandardScaler()
 features_scaled = scaler.fit_transform(features)
 cosine_sim = cosine_similarity(features_scaled)
 
-with gzip.open('preprocessed_data.pickle.gz', 'wb') as f:
+with open('preprocessed_data.pickle.gz', 'wb') as f:
     pickle.dump((df_sample, features, cosine_sim), f)
 
-with gzip.open('trained_model.pickle.gz', 'wb') as f:
+with open('trained_model.pickle.gz', 'wb') as f:
     pickle.dump((scaler,), f)
 
 
